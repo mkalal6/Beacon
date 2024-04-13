@@ -1,5 +1,6 @@
 import React from "react";
-import ChartistGraph from "react-chartist";
+import { Line, Pie } from "react-chartjs-2";
+import Chart from 'chart.js/auto';// react-bootstrap components
 // react-bootstrap components
 import {
   Badge,
@@ -17,6 +18,43 @@ import {
 } from "react-bootstrap";
 
 function Dashboard() {
+  const lineChartData = {
+    labels: [
+      "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May",
+    ],
+    datasets: [
+      {
+        label: '2023',
+        data: [50, 148, 115, 430, 554, 403, 698, 710],
+        borderColor: 'rgba(54, 162, 235, 1)',
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+        fill: false,
+      },
+      {
+        label: '2024',
+        data: [, , , , , , , 710, 600, 520, 500],
+        borderColor: 'rgba(255, 99, 132, 1)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        fill: false,
+      }
+    ]
+  };
+
+  const lineChartOptions = {
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+      x: {
+        grid: {
+          display: false
+        }
+      }
+    },
+    maintainAspectRatio: false
+  };
+
+
   const notifications = [
     { type: "info", message: "You have 5 new sales from your latest collection!" },
     { type: "warning", message: "Inventory alert: 'Abstract' is now out of stock." },
@@ -29,7 +67,7 @@ function Dashboard() {
   return (
     <>
       <Container fluid>
-        <Row>
+      <Row>
           <Col md="8">
             <Card>
               <Card.Header>
@@ -37,66 +75,16 @@ function Dashboard() {
                 <p className="card-category"></p>
               </Card.Header>
               <Card.Body>
-                <div className="ct-chart" id="chartHours">
-                  <ChartistGraph
-                    data={{
-                      labels: [
-                        "Jun",
-                        "Jul",
-                        "Aug",
-                        "Sept",
-                        "Oct",
-                        "Nov",
-                        "Dec",
-                        "Jan",
-                        "Feb",
-                        "Mar",
-                        "Apr",
-                        "May",
-                      ],
-                      series: [
-                        [50, 148, 115, 430, 554, 403, 698, 710],
-                        [, , , , , ,  ,710, 600, 520, 500]
-                      ],
-                    }}
-                    type="Line"
-                    options={{
-                      low: 0,
-                      high: 800,
-                      showArea: false,
-                      height: "245px",
-                      axisX: {
-                        showGrid: false,
-                      },
-                      lineSmooth: true,
-                      showLine: true,
-                      showPoint: true,
-                      fullWidth: true,
-                      chartPadding: {
-                        right: 50,
-                      },
-                    }}
-                    responsiveOptions={[
-                      [
-                        "screen and (max-width: 640px)",
-                        {
-                          axisX: {
-                            labelInterpolationFnc: function (value) {
-                              return value[0];
-                            },
-                          },
-                        },
-                      ],
-                    ]}
-                  />
+                <div className="ct-chart" id="chartHours" style={{ height: '245px' }}>
+                  <Line data={lineChartData} options={lineChartOptions} />
                 </div>
               </Card.Body>
               <Card.Footer>
                 <div className="legend">
                   <i className="fas fa-circle text-info"></i>
-                  2023     
+                  2023
                   <i className="fas fa-circle text-danger"></i>
-                  2024  
+                  2024
                 </div>
                 <hr></hr>
                 <div className="stats">
@@ -139,7 +127,7 @@ function Dashboard() {
       <div className="col-lg-4 col-md-6 col-sm-12">
         <div className="thumbnail">
           <img
-            src={require("assets/img/serenity.jpg")}
+            src={"assets/img/serenity.jpg"}
             alt="Serenity"
             className="img-thumbnail"
           />
@@ -154,7 +142,7 @@ function Dashboard() {
       <div className="col-lg-4 col-md-6 col-sm-12">
         <div className="thumbnail">
           <img
-            src={require("assets/img/deepblue.jpg")}
+            src={"assets/img/deepblue.jpg"}
             alt="Deep Blue"
             className="img-thumbnail"
           />
@@ -169,7 +157,7 @@ function Dashboard() {
       <div className="col-lg-4 col-md-6 col-sm-12">
         <div className="thumbnail">
           <img
-            src={require("assets/img/happiness.jpg")}
+            src={"assets/img/happiness.jpg"}
             alt="Happiness"
             className="img-thumbnail"
           />
