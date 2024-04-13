@@ -1,6 +1,6 @@
 import React from "react";
-import ChartistGraph from "react-chartist";
-// react-bootstrap components
+import { Line, Pie } from "react-chartjs-2";
+import Chart from 'chart.js/auto';// react-bootstrap components
 import {
   Badge,
   Button,
@@ -17,10 +17,65 @@ import {
 } from "react-bootstrap";
 
 function Dashboard() {
+  const lineChartData = {
+    labels: [
+      "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May",
+    ],
+    datasets: [
+      {
+        label: '2023',
+        data: [50, 148, 115, 430, 554, 403, 698, 710],
+        borderColor: 'rgba(54, 162, 235, 1)',
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+        fill: false,
+      },
+      {
+        label: '2024',
+        data: [, , , , , , , 710, 600, 520, 500],
+        borderColor: 'rgba(255, 99, 132, 1)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        fill: false,
+      }
+    ]
+  };
+
+  const lineChartOptions = {
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+      x: {
+        grid: {
+          display: false
+        }
+      }
+    },
+    maintainAspectRatio: false
+  };
+
+  const pieChartData = {
+    labels: ['Open', 'Bounce', 'Unsubscribe'],
+    datasets: [{
+      label: 'Email Statistics',
+      data: [40, 20, 40],
+      backgroundColor: [
+        'rgba(54, 162, 235, 0.5)',
+        'rgba(255, 99, 132, 0.5)',
+        'rgba(255, 206, 86, 0.5)'
+      ],
+      borderColor: [
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 99, 132, 1)',
+        'rgba(255, 206, 86, 1)'
+      ],
+      borderWidth: 1,
+    }]
+  };
+
   return (
     <>
       <Container fluid>
-        <Row>
+      <Row>
           <Col md="8">
             <Card>
               <Card.Header>
@@ -28,66 +83,16 @@ function Dashboard() {
                 <p className="card-category"></p>
               </Card.Header>
               <Card.Body>
-                <div className="ct-chart" id="chartHours">
-                  <ChartistGraph
-                    data={{
-                      labels: [
-                        "Jun",
-                        "Jul",
-                        "Aug",
-                        "Sept",
-                        "Oct",
-                        "Nov",
-                        "Dec",
-                        "Jan",
-                        "Feb",
-                        "Mar",
-                        "Apr",
-                        "May",
-                      ],
-                      series: [
-                        [50, 148, 115, 430, 554, 403, 698, 710],
-                        [, , , , , ,  ,710, 600, 520, 500]
-                      ],
-                    }}
-                    type="Line"
-                    options={{
-                      low: 0,
-                      high: 800,
-                      showArea: false,
-                      height: "245px",
-                      axisX: {
-                        showGrid: false,
-                      },
-                      lineSmooth: true,
-                      showLine: true,
-                      showPoint: true,
-                      fullWidth: true,
-                      chartPadding: {
-                        right: 50,
-                      },
-                    }}
-                    responsiveOptions={[
-                      [
-                        "screen and (max-width: 640px)",
-                        {
-                          axisX: {
-                            labelInterpolationFnc: function (value) {
-                              return value[0];
-                            },
-                          },
-                        },
-                      ],
-                    ]}
-                  />
+                <div className="ct-chart" id="chartHours" style={{ height: '245px' }}>
+                  <Line data={lineChartData} options={lineChartOptions} />
                 </div>
               </Card.Body>
               <Card.Footer>
                 <div className="legend">
                   <i className="fas fa-circle text-info"></i>
-                  2023     
+                  2023
                   <i className="fas fa-circle text-danger"></i>
-                  2024  
+                  2024
                 </div>
                 <hr></hr>
                 <div className="stats">
@@ -104,17 +109,8 @@ function Dashboard() {
                 <p className="card-category">Last Campaign Performance</p>
               </Card.Header>
               <Card.Body>
-                <div
-                  className="ct-chart ct-perfect-fourth"
-                  id="chartPreferences"
-                >
-                  <ChartistGraph
-                    data={{
-                      labels: ["40%", "20%", "40%"],
-                      series: [40, 20, 40],
-                    }}
-                    type="Pie"
-                  />
+                <div className="ct-chart ct-perfect-fourth" id="chartPreferences">
+                  <Pie data={pieChartData} />
                 </div>
                 <div className="legend">
                   <i className="fas fa-circle text-info"></i>
