@@ -1,7 +1,5 @@
 # Beacon
 
-sid
-medhani
-omair
-kunal
-kashish
+- medhani
+- omair
+- kashish
