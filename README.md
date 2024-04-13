@@ -1,5 +1,5 @@
 # Beacon
 
-- medhani
-- omair
-- kashish
+- Medhani
+- Omair
+- Kashish
