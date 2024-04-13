@@ -1,6 +1,6 @@
 import React from "react";
-import { Line, Pie } from "react-chartjs-2";
-import Chart from 'chart.js/auto';// react-bootstrap components
+import ChartistGraph from "react-chartist";
+// react-bootstrap components
 import {
   Badge,
   Button,
@@ -17,65 +17,19 @@ import {
 } from "react-bootstrap";
 
 function Dashboard() {
-  const lineChartData = {
-    labels: [
-      "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May",
-    ],
-    datasets: [
-      {
-        label: '2023',
-        data: [50, 148, 115, 430, 554, 403, 698, 710],
-        borderColor: 'rgba(54, 162, 235, 1)',
-        backgroundColor: 'rgba(54, 162, 235, 0.5)',
-        fill: false,
-      },
-      {
-        label: '2024',
-        data: [, , , , , , , 710, 600, 520, 500],
-        borderColor: 'rgba(255, 99, 132, 1)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        fill: false,
-      }
-    ]
-  };
-
-  const lineChartOptions = {
-    scales: {
-      y: {
-        beginAtZero: true,
-      },
-      x: {
-        grid: {
-          display: false
-        }
-      }
-    },
-    maintainAspectRatio: false
-  };
-
-  const pieChartData = {
-    labels: ['Open', 'Bounce', 'Unsubscribe'],
-    datasets: [{
-      label: 'Email Statistics',
-      data: [40, 20, 40],
-      backgroundColor: [
-        'rgba(54, 162, 235, 0.5)',
-        'rgba(255, 99, 132, 0.5)',
-        'rgba(255, 206, 86, 0.5)'
-      ],
-      borderColor: [
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 206, 86, 1)'
-      ],
-      borderWidth: 1,
-    }]
-  };
-
+  const notifications = [
+    { type: "info", message: "You have 5 new sales from your latest collection!" },
+    { type: "warning", message: "Inventory alert: 'Abstract' is now out of stock." },
+    { type: "success", message: "Price update successful for 'Serenity' to $80." },
+    { type: "danger", message: "Invoice overdue for client #007 for 'Quiet Lake' purchase." },
+    { type: "info", message: "New order received for 'Deep Blue', prepare for shipment." },
+    { type: "success", message: "Order #16 for 'Happiness' has been delivered successfully." },
+    { type: "warning", message: "Payment issue detected for transaction #7789 involving 'Sunny Meadows'." },
+  ];
   return (
     <>
       <Container fluid>
-      <Row>
+        <Row>
           <Col md="8">
             <Card>
               <Card.Header>
@@ -83,16 +37,66 @@ function Dashboard() {
                 <p className="card-category"></p>
               </Card.Header>
               <Card.Body>
-                <div className="ct-chart" id="chartHours" style={{ height: '245px' }}>
-                  <Line data={lineChartData} options={lineChartOptions} />
+                <div className="ct-chart" id="chartHours">
+                  <ChartistGraph
+                    data={{
+                      labels: [
+                        "Jun",
+                        "Jul",
+                        "Aug",
+                        "Sept",
+                        "Oct",
+                        "Nov",
+                        "Dec",
+                        "Jan",
+                        "Feb",
+                        "Mar",
+                        "Apr",
+                        "May",
+                      ],
+                      series: [
+                        [50, 148, 115, 430, 554, 403, 698, 710],
+                        [, , , , , ,  ,710, 600, 520, 500]
+                      ],
+                    }}
+                    type="Line"
+                    options={{
+                      low: 0,
+                      high: 800,
+                      showArea: false,
+                      height: "245px",
+                      axisX: {
+                        showGrid: false,
+                      },
+                      lineSmooth: true,
+                      showLine: true,
+                      showPoint: true,
+                      fullWidth: true,
+                      chartPadding: {
+                        right: 50,
+                      },
+                    }}
+                    responsiveOptions={[
+                      [
+                        "screen and (max-width: 640px)",
+                        {
+                          axisX: {
+                            labelInterpolationFnc: function (value) {
+                              return value[0];
+                            },
+                          },
+                        },
+                      ],
+                    ]}
+                  />
                 </div>
               </Card.Body>
               <Card.Footer>
                 <div className="legend">
                   <i className="fas fa-circle text-info"></i>
-                  2023
+                  2023     
                   <i className="fas fa-circle text-danger"></i>
-                  2024
+                  2024  
                 </div>
                 <hr></hr>
                 <div className="stats">
@@ -103,25 +107,20 @@ function Dashboard() {
             </Card>
           </Col>
           <Col md="4">
-            <Card>
+          <Card>
               <Card.Header>
-                <Card.Title as="h4">Email Statistics</Card.Title>
-                <p className="card-category">Last Campaign Performance</p>
+                <Card.Title as="h4">Notifications</Card.Title>
+                <p className="card-category">Recent Alerts & Messages</p>
               </Card.Header>
               <Card.Body>
-                <div className="ct-chart ct-perfect-fourth" id="chartPreferences">
-                  <Pie data={pieChartData} />
-                </div>
-                <div className="legend">
-                  <i className="fas fa-circle text-info"></i>
-                  Open <i className="fas fa-circle text-danger"></i>
-                  Bounce <i className="fas fa-circle text-warning"></i>
-                  Unsubscribe
-                </div>
-                <hr></hr>
-                <div className="stats">
-                  <i className="far fa-clock"></i>
-                  Campaign sent 2 days ago
+                <div className="notifications">
+                  <ul className="list-unstyled">
+                    {notifications.map((notification, index) => (
+                      <li key={index}>
+                        <Badge variant={notification.type}>{notification.type.charAt(0).toUpperCase() + notification.type.slice(1)}</Badge> {notification.message}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </Card.Body>
             </Card>
@@ -140,14 +139,14 @@ function Dashboard() {
       <div className="col-lg-4 col-md-6 col-sm-12">
         <div className="thumbnail">
           <img
-            src="artwork1.jpg"
-            alt="Artwork 1"
+            src={require("assets/img/serenity.jpg")}
+            alt="Serenity"
             className="img-thumbnail"
           />
           <div className="caption">
-            <h5>Artwork 1</h5>
+            <h5>Serenity</h5>
             <p>Stock: 10</p>
-            <p>Price: $100</p>
+            <p>Price: $80</p>
           </div>
         </div>
       </div>
@@ -155,14 +154,14 @@ function Dashboard() {
       <div className="col-lg-4 col-md-6 col-sm-12">
         <div className="thumbnail">
           <img
-            src="artwork2.jpg"
-            alt="Artwork 2"
+            src={require("assets/img/deepblue.jpg")}
+            alt="Deep Blue"
             className="img-thumbnail"
           />
           <div className="caption">
-            <h5>Artwork 2</h5>
+            <h5>Deep Blue</h5>
             <p>Stock: 5</p>
-            <p>Price: $150</p>
+            <p>Price: $300</p>
           </div>
         </div>
       </div>
@@ -170,14 +169,14 @@ function Dashboard() {
       <div className="col-lg-4 col-md-6 col-sm-12">
         <div className="thumbnail">
           <img
-            src="artwork3.jpg"
-            alt="Artwork 3"
+            src={require("assets/img/happiness.jpg")}
+            alt="Happiness"
             className="img-thumbnail"
           />
           <div className="caption">
-            <h5>Artwork 3</h5>
-            <p>Stock: 8</p>
-            <p>Price: $120</p>
+            <h5>Happiness</h5>
+            <p>Stock: 2</p>
+            <p>Price: $450</p>
           </div>
         </div>
       </div>
@@ -195,7 +194,7 @@ function Dashboard() {
             <Card className="card-tasks">
               <Card.Header>
                 <Card.Title as="h4">Tasks</Card.Title>
-                <p className="card-category">Backend development</p>
+                <p className="card-category"></p>
               </Card.Header>
               <Card.Body>
                 <div className="table-full-width">
@@ -214,8 +213,7 @@ function Dashboard() {
                           </Form.Check>
                         </td>
                         <td>
-                          Sign contract for "What are conference organizers
-                          afraid of?"
+                          Fulfilling Orders 
                         </td>
                         <td className="td-actions text-right">
                           <OverlayTrigger
@@ -262,8 +260,7 @@ function Dashboard() {
                           </Form.Check>
                         </td>
                         <td>
-                          Lines From Great Russian Literature? Or E-mails From
-                          My Boss?
+                          Restocking Supplies
                         </td>
                         <td className="td-actions text-right">
                           <OverlayTrigger
@@ -310,9 +307,7 @@ function Dashboard() {
                           </Form.Check>
                         </td>
                         <td>
-                          Flooded: One year later, assessing what was lost and
-                          what was found when a ravaging rain swept through
-                          metro Detroit
+                          Scheduling Social Media Posts 
                         </td>
                         <td className="td-actions text-right">
                           <OverlayTrigger
@@ -358,8 +353,7 @@ function Dashboard() {
                           </Form.Check>
                         </td>
                         <td>
-                          Create 4 Invisible User Experiences you Never Knew
-                          About
+                          Update Online Gallery
                         </td>
                         <td className="td-actions text-right">
                           <OverlayTrigger
@@ -404,7 +398,7 @@ function Dashboard() {
                             </Form.Check.Label>
                           </Form.Check>
                         </td>
-                        <td>Read "Following makes Medium better"</td>
+                        <td>Research Art Fairs</td>
                         <td className="td-actions text-right">
                           <OverlayTrigger
                             overlay={
@@ -436,61 +430,11 @@ function Dashboard() {
                           </OverlayTrigger>
                         </td>
                       </tr>
-                      <tr>
-                        <td>
-                          <Form.Check className="mb-1 pl-0">
-                            <Form.Check.Label>
-                              <Form.Check.Input
-                                defaultValue=""
-                                disabled
-                                type="checkbox"
-                              ></Form.Check.Input>
-                              <span className="form-check-sign"></span>
-                            </Form.Check.Label>
-                          </Form.Check>
-                        </td>
-                        <td>Unfollow 5 enemies from twitter</td>
-                        <td className="td-actions text-right">
-                          <OverlayTrigger
-                            overlay={
-                              <Tooltip id="tooltip-938342127">
-                                Edit Task..
-                              </Tooltip>
-                            }
-                          >
-                            <Button
-                              className="btn-simple btn-link p-1"
-                              type="button"
-                              variant="info"
-                            >
-                              <i className="fas fa-edit"></i>
-                            </Button>
-                          </OverlayTrigger>
-                          <OverlayTrigger
-                            overlay={
-                              <Tooltip id="tooltip-119603706">Remove..</Tooltip>
-                            }
-                          >
-                            <Button
-                              className="btn-simple btn-link p-1"
-                              type="button"
-                              variant="danger"
-                            >
-                              <i className="fas fa-times"></i>
-                            </Button>
-                          </OverlayTrigger>
-                        </td>
-                      </tr>
                     </tbody>
                   </Table>
                 </div>
               </Card.Body>
               <Card.Footer>
-                <hr></hr>
-                <div className="stats">
-                  <i className="now-ui-icons loader_refresh spin"></i>
-                  Updated 3 minutes ago
-                </div>
               </Card.Footer>
             </Card>
           </Col>
