@@ -165,7 +165,7 @@ function User() {
                     <img
                       alt="..."
                       className="avatar border-gray"
-                      src={"./src/assets/img/faces/face-3.jpg"}
+                      src={"./src/assets/img/faces/artist.jpeg"}
                     ></img>
                     <h5 className="title">Mary Kaur</h5>
                   </a>
