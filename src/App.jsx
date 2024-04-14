@@ -11,7 +11,7 @@ import User from './components/UserProfile.jsx'
 import TableList from './components/TableList.jsx'
 import NavBar from './components/Navbar.jsx'
 import CryptoChart from './components/MarketPlace.jsx'
-
+import Transactions from './components/Chutiya.jsx'
 function App() {
  
   return (
@@ -26,6 +26,7 @@ function App() {
           <Route path='/profile' element = {<User />}></Route>
           <Route path='/ledger' element = {<TableList />}></Route>
           <Route path='/trends' element = {<CryptoChart />}></Route>
+          <Route path='/transactions' element = {<Transactions />}></Route>
       </Routes>
     </BrowserRouter>
     

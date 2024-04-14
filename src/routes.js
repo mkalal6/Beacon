@@ -4,6 +4,8 @@ import Profile from './components/Profile.jsx'
 import TableList from './components/TableList.jsx'
 import NavBar from './components/Navbar.jsx'
 import CryptoChart from './components/MarketPlace.jsx'
+import Transactions from './components/Chutiya.jsx'
+
 const dashboardRoutes = [
   {
     path: "/dashboard",
@@ -28,6 +30,12 @@ const dashboardRoutes = [
     name: "Trends",
     icon: "nc-icon nc-notes",
     component: CryptoChart,
+  },
+  {
+    path: "/transactions",
+    name: "Transactions",
+    icon: "nc-icon nc-notes",
+    component: Transactions,
   }
 ];
 
