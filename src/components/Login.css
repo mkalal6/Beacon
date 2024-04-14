@@ -1,0 +1,75 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #f5f5f5; /* Light grey background */
+}
+
+.login-form {
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: #800000; /* Maroon background */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    width: 360px; /* Fixed width */
+    gap: 10px; /* Space between elements */
+}
+
+.login-form h2 {
+    color: white; /* White text for contrast */
+    font-size: 1.5rem;
+}
+
+.login-form button {
+    padding: 0.5rem 1rem;
+    width: 100%; /* Full width */
+    background-color: #a52a2a; /* Lighter maroon for buttons */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.login-form button:hover {
+    background-color: #641e1e; /* Darker maroon on hover */
+}
+
+.logged-in-message {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background: #800000; /* Maroon background */
+    width: 360px; /* Consistent width with the login form */
+    gap: 10px; /* Space between text and buttons */
+    color: white; /* White text for contrast */
+    font-size: 1.2rem;
+    margin-top: 2rem; /* Adds top margin for visual spacing */
+}
+
+.logged-in-buttons {
+    display: flex;
+    width: 100%; /* Ensure buttons take full width of the container */
+    justify-content: center; /* Center buttons horizontally */
+    gap: 10px; /* Space between buttons */
+}
+
+.logged-in-buttons button {
+    padding: 0.5rem 1rem;
+    flex: 1; /* Each button takes equal space */
+    background-color: #a52a2a; /* Lighter maroon for buttons */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.logged-in-buttons button:hover {
+    background-color: #641e1e; /* Darker maroon on hover */
+}
