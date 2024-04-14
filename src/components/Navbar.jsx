@@ -30,18 +30,19 @@ function NavBar() {
     return "Beacon";
   };
   return (
-        <Nav>
+        <Nav><div class="d-flex p-2"> 
         <div>
-    
-
+        <a className="simple-text" href="/dashboard">
+            <img class="rounded" src={"./src/assets/img/file.png"} style ={{width: "200px", height:"80px"}}alt="..." />
+          </a>
         </div>
-        <div>
+        <div class="navbar ">
               {routes.map((prop, key) => {
                 if (!prop.redirect)
                   return (
                     <li
                       className={
-                        prop.upgrade
+                     prop.upgrade
                           ? "active active-pro"
                           : activeRoute(prop.layout + prop.path)
                       }
@@ -52,14 +53,17 @@ function NavBar() {
                         className="nav-link"
                         activeClassName="active"
                       >
+                        <div class="d-flex p-2">
                         <i className={prop.icon} />
                         <p>{prop.name}</p>
+                        </div>  
                       </NavLink>
                     </li>
                   );
                 return null;
               })}
             </div>
+    </div>
             </Nav>
   );
 }
