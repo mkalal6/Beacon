@@ -4,7 +4,7 @@ import Profile from './components/Profile.jsx'
 import TableList from './components/TableList.jsx'
 import NavBar from './components/Navbar.jsx'
 import CryptoChart from './components/MarketPlace.jsx'
-import Transactions from './components/Chutiya.jsx'
+import Transactions from './components/Xerp.jsx'
 
 const dashboardRoutes = [
   {
