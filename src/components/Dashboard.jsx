@@ -127,7 +127,7 @@ function Dashboard() {
       <div className="col-lg-4 col-md-6 col-sm-12">
         <div className="thumbnail">
           <img
-            src={"assets/img/serenity.jpg"}
+            src={"./src/assets/img/serenity.jpg"}
             alt="Serenity"
             className="img-thumbnail"
           />
@@ -142,7 +142,7 @@ function Dashboard() {
       <div className="col-lg-4 col-md-6 col-sm-12">
         <div className="thumbnail">
           <img
-            src={"assets/img/deepblue.jpg"}
+            src={"./src/assets/img/deepblue.jpg"}
             alt="Deep Blue"
             className="img-thumbnail"
           />
@@ -157,7 +157,7 @@ function Dashboard() {
       <div className="col-lg-4 col-md-6 col-sm-12">
         <div className="thumbnail">
           <img
-            src={"assets/img/happiness.jpg"}
+            src={"./src/assets/img/happiness.jpg"}
             alt="Happiness"
             className="img-thumbnail"
           />

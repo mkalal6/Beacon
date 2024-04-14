@@ -133,7 +133,7 @@ function User() {
                           defaultValue="Hello! I'm Mary, a watercolor artist and micro-entrepreneur based in St.Louis. My artwork, characterized by vibrant landscapes and urban scenes, is sold through my online gallery where I also host art workshops focused on sustainable practices.
                           "
                           placeholder="Here can be your description"
-                          rows="4"
+                          rows="100"
                           as="textarea"
                         ></Form.Control>
                       </Form.Group>
@@ -156,7 +156,7 @@ function User() {
               <div className="card-image">
                 <img
                   alt="..."
-                  src={require("assets/img/photo-1431578500526-4d9613015464.jpeg")}
+                  src={"./src/assets/img/photo-1431578500526-4d9613015464.jpeg"}
                 ></img>
               </div>
               <Card.Body>
@@ -165,7 +165,7 @@ function User() {
                     <img
                       alt="..."
                       className="avatar border-gray"
-                      src={require("assets/img/faces/face-3.jpg")}
+                      src={"./src/assets/img/faces/face-3.jpg"}
                     ></img>
                     <h5 className="title">Mary Kaur</h5>
                   </a>
