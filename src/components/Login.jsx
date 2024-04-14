@@ -4,9 +4,7 @@ import { withAuthInfo, useRedirectFunctions, useLogoutFunction } from '@propelau
 const YourApp = withAuthInfo((props) => {
     const logoutFunction = useLogoutFunction()
     const { redirectToLoginPage, redirectToSignupPage, redirectToAccountPage } = useRedirectFunctions()
-    // Or if you want to make links instead
-    // const { getLoginPageUrl, getSignupPageUrl, getAccountPageUrl } = useHostedPageUrls()
-
+    
     if (props.isLoggedIn) {
         return (
             <div>

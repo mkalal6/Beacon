@@ -4,7 +4,6 @@ import { useLocation, NavLink } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import routes from "../routes";
 
-// import logo from "assets/img/reactlogo.png";
 
 function Sidebar() {
   const location = useLocation();

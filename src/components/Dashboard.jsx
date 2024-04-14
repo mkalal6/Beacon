@@ -1,7 +1,7 @@
 import React from "react";
 import { Line, Pie } from "react-chartjs-2";
-import Chart from 'chart.js/auto';// react-bootstrap components
-// react-bootstrap components
+import Chart from 'chart.js/auto';
+
 import {
   Badge,
   Button,
