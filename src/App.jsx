@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import  YourApp  from "./components/Login.jsx";
-import './App.css'
+import './components/light-bootstrap-dashboard.css'
+import './components/documentation.css'
+import './components/demo.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Profile from './components/Profile.jsx'
 import Dashboard from './components/Dashboard.jsx'
