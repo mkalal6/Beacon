@@ -44,7 +44,7 @@ async function getAccount(type) {
     standbyResultField.value = results
   } else {
     operationalResultField.value = results
-  }       
+  }         
       
 // ------------------------------------------------------Get the current balance.
   const my_balance = (await client.getXrpBalance(my_wallet.address))  
