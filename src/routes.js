@@ -3,7 +3,7 @@ import Dashboard from './components/Dashboard.jsx'
 import Profile from './components/Profile.jsx'
 import TableList from './components/TableList.jsx'
 import NavBar from './components/Navbar.jsx'
-
+import CryptoChart from './components/MarketPlace.jsx'
 const dashboardRoutes = [
   {
     path: "/dashboard",
@@ -18,11 +18,17 @@ const dashboardRoutes = [
     component: Profile,
   },
   {
-    path: "/table",
+    path: "/ledger",
     name: "Ledger",
     icon: "nc-icon nc-notes",
     component: TableList,
   },
+  {
+    path: "/trends",
+    name: "Trends",
+    icon: "nc-icon nc-notes",
+    component: CryptoChart,
+  }
 ];
 
 export default dashboardRoutes;
