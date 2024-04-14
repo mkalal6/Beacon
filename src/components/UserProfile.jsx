@@ -165,11 +165,7 @@ function User() {
                     <img
                       alt="..."
                       className="avatar border-gray"
-<<<<<<< HEAD:src/components/UserProfile.js
-                      src={require("assets/img/faces/artist.jpeg")}
-=======
-                      src={"./src/assets/img/faces/face-3.jpg"}
->>>>>>> 928d0370b0f6702e4d3411cd97fb8ad4c9fb010f:src/components/UserProfile.jsx
+                      src={"./src/assets/img/faces/artist.jpeg"}
                     ></img>
                     <h5 className="title">Mary Kaur</h5>
                   </a>
